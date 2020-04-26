@@ -123,7 +123,7 @@ function Validate(validateInput: Validatable) {
 }
 
 //autobind decorator, this will enable the methods to automatically bind to using 'this' instead of
-//having to do so every time
+//having to do .bind(this) every time
 function autobind(
   _target: any,
   _methodName: string,
