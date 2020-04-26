@@ -122,7 +122,6 @@ class ProjectList {
     this.templateElement = <HTMLTemplateElement>(
       document.getElementById("project-list")!
     );
-
     //get the piece of code in which the template should be displayed in
     this.hostElement = <HTMLDivElement>document.getElementById("app")!;
 
@@ -277,10 +276,6 @@ class ProjectInput {
   //adds an event listener to the form submission
   private configure() {
     this.element.addEventListener("submit", this.submitHandler);
-  }
-  //attaches the HTML form into the DOM
-  private attach() {
-    this.hostElement.insertAdjacentElement("afterbegin", this.element);
   }
 }
 
