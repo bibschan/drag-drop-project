@@ -1,3 +1,18 @@
+//Drag and Drop Interfaces
+interface Draggable {
+  dragStartHandler(event: DragEvent): void;
+  dragEndHandler(event: DragEvent): void;
+}
+
+interface DragTarget {
+  //signal the browser that thing you're dragging over is a valid drag target
+  dragOverHandler(event: DragEvent): void;
+  //react to the drop that happens, handles the drop, updates the data
+  dropHandler(event: DragEvent): void;
+  //visual feedback for the user
+  dragLeaveHandler(event: DragEvent): void;
+}
+
 //project type
 enum ProjectStatus {
   active,
@@ -36,7 +51,7 @@ class ProjectState {
     this.listeners.push(listenerFn);
   }
 
-  public addProject(title: string, description: string, numOfPeople: number) {
+  addProject(title: string, description: string, numOfPeople: number) {
     const newProject = new Project(
       Math.random().toString(),
       title,
@@ -45,6 +60,17 @@ class ProjectState {
       ProjectStatus.active
     );
     this.projects.push(newProject);
+    this.updateListeners();
+  }
+
+  moveProject(projectId: string, newStatus: ProjectStatus) {
+    //find method runs in every element of the array
+    const project = this.projects.find((prj) => prj.id === projectId);
+    if (project && project.status !== newStatus) project.status = newStatus;
+    this.updateListeners();
+  }
+
+  private updateListeners() {
     // loop through all listener functions with a for loop
     for (const listenerFn of this.listeners) {
       //slice returns a copy of the array, not the original one. Javascript is pass by reference so if you pass the array itself you'd be changing the original values
@@ -152,7 +178,8 @@ abstract class Component<T extends HTMLElement, U extends HTMLElement> {
 }
 
 //ProjectItem class is responsible for rendering one project item on the screen
-class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> {
+class ProjectItem extends Component<HTMLUListElement, HTMLLIElement>
+  implements Draggable {
   private project: Project;
 
   //getter
@@ -168,7 +195,20 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> {
     this.configure();
     this.renderContent();
   }
-  configure() {}
+  @autobind
+  dragStartHandler(event: DragEvent) {
+    event.dataTransfer!.setData("text/plain", this.project.id);
+    event.dataTransfer!.effectAllowed = "move";
+  }
+
+  dragEndHandler(_event: DragEvent) {
+    console.log("drag event ended");
+  }
+
+  configure() {
+    this.element.addEventListener("dragstart", this.dragStartHandler);
+    this.element.addEventListener("dragend", this.dragEndHandler);
+  }
 
   renderContent() {
     //reaches out to DOM elements to render
@@ -180,7 +220,8 @@ class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> {
 }
 
 //projectList Class
-class ProjectList extends Component<HTMLDivElement, HTMLElement> {
+class ProjectList extends Component<HTMLDivElement, HTMLElement>
+  implements DragTarget {
   assignedProjects: Project[];
 
   constructor(private type: "active" | "finished") {
@@ -188,6 +229,32 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
     this.assignedProjects = [];
     this.configure(); // set up the listener
     this.renderContent();
+  }
+  @autobind
+  dragOverHandler(event: DragEvent) {
+    if (event.dataTransfer && event.dataTransfer.types[0] === "text/plain") {
+      // allows only text transfer
+      //javascript's default behaviour is to not allow dropping, you have to prevent that
+      event.preventDefault();
+      const listEl = this.element.querySelector("ul")!;
+      listEl.classList.add("droppable");
+    }
+  }
+
+  //autobinds keyword this to the surrounding class
+  @autobind
+  dropHandler(event: DragEvent) {
+    const projId = event.dataTransfer!.getData("text/plain");
+    projectState.moveProject(
+      projId,
+      this.type === "active" ? ProjectStatus.active : ProjectStatus.finished
+    );
+  }
+
+  @autobind
+  dragLeaveHandler(_event: DragEvent) {
+    const listEl = this.element.querySelector("ul")!;
+    listEl.classList.remove("droppable");
   }
 
   private renderProjects() {
@@ -210,6 +277,9 @@ class ProjectList extends Component<HTMLDivElement, HTMLElement> {
   }
 
   configure() {
+    this.element.addEventListener("dragover", this.dragOverHandler);
+    this.element.addEventListener("dragleave", this.dragLeaveHandler);
+    this.element.addEventListener("drop", this.dropHandler);
     // configure the listener
     projectState.addListener((projects: Project[]) => {
       //filters the active projects
