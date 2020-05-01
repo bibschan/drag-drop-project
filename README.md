@@ -12,3 +12,6 @@ The final demo video is made available on YouTube for reference: https://youtu.b
 
 ![gif](https://media.discordapp.net/attachments/705529523491307574/705595724066324480/ezgif-4-e45770dda486.gif?width=347&height=570)
 
+## How to run this project
+
+First, run ```npm install``` to install the dependencies, then run the ```npm start``` command to initialize the server (a new tab will automatically open in your browser). The ```tsc``` command compiles any changes made.
