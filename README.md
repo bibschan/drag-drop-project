@@ -10,6 +10,8 @@ Fabulous fun course and project, I was able to learn the subtle differences betw
 
 The final demo video is made available on YouTube for reference: https://youtu.be/TDGZCn2c02s
 
+![gif](https://media.discordapp.net/attachments/705529523491307574/705595724066324480/ezgif-4-e45770dda486.gif?width=347&height=570)
+
 # Overview and quick project screenshots
 
 1. Form with blank input
@@ -28,4 +30,6 @@ The final demo video is made available on YouTube for reference: https://youtu.b
 
 ![4](https://media.discordapp.net/attachments/705529523491307574/705529575655866438/4.png)
 
-The final demo video is made available on YouTube for reference: https://youtu.be/TDGZCn2c02s
+The final demo video is below:
+
+![gif](https://media.discordapp.net/attachments/705529523491307574/705595724066324480/ezgif-4-e45770dda486.gif?width=347&height=570)
