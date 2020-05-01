@@ -12,24 +12,3 @@ The final demo video is made available on YouTube for reference: https://youtu.b
 
 ![gif](https://media.discordapp.net/attachments/705529523491307574/705595724066324480/ezgif-4-e45770dda486.gif?width=347&height=570)
 
-# Overview and quick project screenshots
-
-1. Form with blank input
-
-![1](https://media.discordapp.net/attachments/705529523491307574/705529582324809818/1.png)
-
-2. Filling out with data
-
-![2](https://media.discordapp.net/attachments/705529523491307574/705529580542361680/2.png)
-
-3. After adding two projects, initially puts all added projects into the Active tab.
-
-![3](https://media.discordapp.net/attachments/705529523491307574/705529578378231909/3.png)
-
-4. You're able to drag projects around and place them into the Finished projects tab 
-
-![4](https://media.discordapp.net/attachments/705529523491307574/705529575655866438/4.png)
-
-The final demo video is below:
-
-![gif](https://media.discordapp.net/attachments/705529523491307574/705595724066324480/ezgif-4-e45770dda486.gif?width=347&height=570)
