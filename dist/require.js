@@ -2,6 +2,7 @@
  * @license RequireJS 2.3.6 Copyright jQuery Foundation and other contributors.
  * Released under MIT license, https://github.com/requirejs/requirejs/blob/master/LICENSE
  */
+
 var requirejs, require, define;
 !(function (global, setTimeout) {
   var req,
@@ -1118,4 +1119,6 @@ var requirejs, require, define;
   }
 })(this, "undefined" == typeof setTimeout ? void 0 : setTimeout);
 
-require("app");
+require(["app"], function (app) {
+  //app is now loaded.
+});
