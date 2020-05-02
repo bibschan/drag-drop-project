@@ -1,7 +1,7 @@
 import { autobind } from "../decorators/autobind";
 import { Project } from "./Project";
-import { ProjectItem } from "ProjectItem";
-import { Component } from "Component";
+import { ProjectItem } from "./ProjectItem";
+import { Component } from "./Component";
 import { ProjectState } from "../state/ProjectState";
 
 export module ProjectList {

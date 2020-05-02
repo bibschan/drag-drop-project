@@ -1,6 +1,9 @@
 //input validation interface - creates the structure of the object that will
 //be passed into the validate function
-namespace Valitadable {
+
+// import { ValidateFunctions } from "ValidateFunctions";
+
+export module Valitadable {
   export interface Validatable {
     value: string | number;
     required?: boolean;
@@ -20,21 +23,27 @@ namespace Valitadable {
       //checks if value is empty after trimming the string
       isValid = isValid && validateInput.value.toString().trim().length !== 0; //if minLength is set then it should have a min length. only checks strings, doesnt make sense
 
-    if (ifString(validateInput) && notNull(validateInput))
+    if (
+      validateInput.minLength != null &&
+      typeof validateInput.value === "string"
+    )
       isValid =
-        isValid &&
-        validateInput.value.toString().length > validateInput.minLength!; // if maxLength is set, then it should have a max length.
+        isValid && validateInput.value.length > validateInput.minLength!; // if maxLength is set, then it should have a max length.
 
-    if (ifString(validateInput) && notNull(validateInput))
+    if (
+      validateInput.maxLength != null &&
+      typeof validateInput.value === "string"
+    )
       isValid =
-        isValid &&
-        validateInput.value.toString().length < validateInput.maxLength!; //the following checks if the input is bigger than the min value
+        isValid && validateInput.value.length < validateInput.maxLength!; //the following checks if the input is bigger than the min value
 
     if (validateInput.min != null && typeof validateInput.value === "number")
       isValid = isValid && validateInput.value > validateInput.min;
+
     //the following checks if the input is smaller than the max value
     if (validateInput.max != null && typeof validateInput.value === "number")
       isValid = isValid && validateInput.value < validateInput.max;
+
     return isValid;
   }
 }
