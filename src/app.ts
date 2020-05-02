@@ -1,5 +1,5 @@
-import { ProjectInput } from "ProjectInput";
-import { ProjectList } from "ProjectList";
+import { ProjectInput } from "./components/ProjectInput";
+import { ProjectList } from "./components/ProjectList";
 
 export module App {
   //creates a variable and instantiates a ProjectInput object
