@@ -1,9 +1,9 @@
 import { Component } from "./Component";
 import { autobind } from "../decorators/autobind";
 import { ProjectState } from "../state/ProjectState";
-import { Valitadable } from "../util/Validatable";
+import { Validatable } from "../util/Validatable";
 
-//projectInput class
+// ProjectInput class
 
 export module ProjectInput {
   export class ProjectInput extends Component.Component<
@@ -29,8 +29,7 @@ export module ProjectInput {
         this.element.querySelector("#people")
       );
 
-      //calls the configure method that adds an event listener to the form submission
-      this.configure();
+      this.configure(); //calls the configure method that adds an event listener to the form submission
       this.renderContent();
     }
 
@@ -40,18 +39,18 @@ export module ProjectInput {
       const inputPeople = this.peopleInputElement.value;
 
       //create the validatable objects
-      const titleValidatable: Valitadable.Validatable = {
+      const titleValidatable: Validatable.Validatable = {
         value: inputTitle,
         required: true,
       };
 
-      const descriptionValidatable: Valitadable.Validatable = {
+      const descriptionValidatable: Validatable.Validatable = {
         value: inputDescription,
         required: true,
         minLength: 5,
       };
 
-      const peopleValidatable: Valitadable.Validatable = {
+      const peopleValidatable: Validatable.Validatable = {
         value: inputTitle,
         required: true,
         min: 1,
@@ -59,9 +58,9 @@ export module ProjectInput {
       };
 
       if (
-        !Valitadable.Validate(titleValidatable) ||
-        !Valitadable.Validate(descriptionValidatable) ||
-        !Valitadable.Validate(peopleValidatable)
+        !Validatable.validate(titleValidatable) ||
+        !Validatable.validate(descriptionValidatable) ||
+        !Validatable.validate(peopleValidatable)
       )
         alert("Input is incorrect! Try again");
       else return [inputTitle, inputDescription, +inputPeople];
@@ -75,9 +74,7 @@ export module ProjectInput {
 
     @autobind
     private submitHandler(event: Event) {
-      //prevent the default HTTP request be sent out
-      event.preventDefault();
-      // console.log(this.titleInputElement.value);
+      event.preventDefault(); //prevent the default HTTP request be sent out
       const userInput = this.gatherUserInput();
 
       if (Array.isArray(userInput)) {

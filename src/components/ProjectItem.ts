@@ -2,15 +2,16 @@ import { autobind } from "../decorators/autobind";
 import { Project } from "./Project";
 import { Component } from "./Component";
 
+//ProjectItem class is responsible for rendering one project item on the screen
+
 export module ProjectItem {
-  //ProjectItem class is responsible for rendering one project item on the screen
   export class ProjectItem
     extends Component.Component<HTMLUListElement, HTMLLIElement>
     implements Draggable {
     private project: Project.Project;
 
-    //getter
     get persons() {
+      //getter
       const people =
         this.project.people === 1
           ? "1 Person"

@@ -4,8 +4,8 @@ import { ProjectItem } from "./ProjectItem";
 import { Component } from "./Component";
 import { ProjectState } from "../state/ProjectState";
 
+//projectList Class
 export module ProjectList {
-  //projectList Class
   export class ProjectList
     extends Component.Component<HTMLDivElement, HTMLElement>
     implements DragTarget {
@@ -21,14 +21,13 @@ export module ProjectList {
     dragOverHandler(event: DragEvent) {
       if (event.dataTransfer && event.dataTransfer.types[0] === "text/plain") {
         // allows only text transfer
-        //javascript's default behaviour is to not allow dropping, you have to prevent that
-        event.preventDefault();
+        event.preventDefault(); //javascript's default behaviour is to not allow dropping an item on hover, you have to prevent/work around that
         const listEl = this.element.querySelector("ul")!;
         listEl.classList.add("droppable");
       }
     }
 
-    //autobinds keyword this to the surrounding class
+    //autobinds keyword .this to the surrounding class
     @autobind
     dropHandler(event: DragEvent) {
       const projId = event.dataTransfer!.getData("text/plain");

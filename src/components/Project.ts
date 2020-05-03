@@ -1,5 +1,4 @@
-//project type
-
+// Project class and Status custom enum
 export module Project {
   export enum ProjectStatus {
     active,
