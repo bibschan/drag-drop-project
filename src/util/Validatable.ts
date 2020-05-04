@@ -17,11 +17,12 @@ export module Validatable {
   //validation function
   export function validate(validateInput: Validatable) {
     let isValid = true; //we set this to false as soon as any variable fails the test
-    isValid = ValidateString.requiredCheck(isValid, validateInput);
-    isValid = ValidateString.maxLengthCheck(isValid, validateInput);
-    isValid = ValidateString.minLengthCheck(isValid, validateInput);
-    isValid = ValidateNumber.minValueCheck(isValid, validateInput);
-    isValid = ValidateNumber.maxValueCheck(isValid, validateInput);
+
+    isValid = isValid && ValidateString.requiredCheck(isValid, validateInput);
+    isValid = isValid && ValidateString.maxLengthCheck(isValid, validateInput);
+    isValid = isValid && ValidateString.minLengthCheck(isValid, validateInput);
+    isValid = isValid && ValidateNumber.minValueCheck(isValid, validateInput);
+    isValid = isValid && ValidateNumber.maxValueCheck(isValid, validateInput);
 
     return isValid;
   }
