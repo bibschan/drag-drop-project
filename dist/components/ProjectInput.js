@@ -7,7 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 import { Component } from "./Component";
 import { autobind } from "../decorators/autobind";
 import { ProjectState } from "../state/ProjectState";
-import { Valitadable } from "../util/Validatable";
+import { Validatable } from "../util/Validatable";
 export var ProjectInput;
 (function (ProjectInput_1) {
     class ProjectInput extends Component.Component {
@@ -38,9 +38,9 @@ export var ProjectInput;
                 min: 1,
                 max: 5,
             };
-            if (!Valitadable.Validate(titleValidatable) ||
-                !Valitadable.Validate(descriptionValidatable) ||
-                !Valitadable.Validate(peopleValidatable))
+            if (!Validatable.validate(titleValidatable) ||
+                !Validatable.validate(descriptionValidatable) ||
+                !Validatable.validate(peopleValidatable))
                 alert("Input is incorrect! Try again");
             else
                 return [inputTitle, inputDescription, +inputPeople];
