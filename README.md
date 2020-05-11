@@ -2,11 +2,12 @@
 
 This project was created as a part of my Typescript learning experience (Related Udemy course: https://www.udemy.com/course/understanding-typescript)
 
-Fabulous fun course and project, I was able to learn the subtle differences between vanilla JS and Typescript. A few key things I learned from this course:
+Fabulous fun course and project, I was able to learn the differences between vanilla JS and Typescript. A few key things I learned from this course:
 - How to develop using Typescript only
 - Configure the compiler to optimal settings for this project
-- Inheritance and Encapsulation in Typescript / JS to maintain clean code 
+- Inheritance and Encapsulation in Typescript to maintain the code modular and avoid duplication
 - Object-oriented approach to Typescript / JS
+- Organizing the project files into a folder structure that's easy to find files
 
 The final demo video is made available on YouTube for reference: https://youtu.be/TDGZCn2c02s
 
