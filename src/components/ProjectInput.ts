@@ -1,4 +1,4 @@
-import { Component } from "./Component";
+import { Component } from "Component";
 import { autobind } from "../decorators/autobind";
 import { ProjectState } from "../state/ProjectState";
 import { Validatable } from "../util/Validatable";
