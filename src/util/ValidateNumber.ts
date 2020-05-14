@@ -1,5 +1,5 @@
 // ValidateNumber
-import { Validatable } from "Validatable";
+import { Validatable } from "./Validatable";
 
 export module ValidateNumber {
   export function minValueCheck(
@@ -7,7 +7,7 @@ export module ValidateNumber {
     validateInput: Validatable.Validatable
   ) {
     if (validateInput.min != null && typeof validateInput.value === "number")
-      isValid = isValid && validateInput.value > validateInput.min;
+      isValid = isValid && validateInput.value >= validateInput.min;
     return isValid;
   }
 
@@ -16,7 +16,7 @@ export module ValidateNumber {
     validateInput: Validatable.Validatable
   ) {
     if (validateInput.max != null && typeof validateInput.value === "number")
-      isValid = isValid && validateInput.value < validateInput.max;
+      isValid = isValid && validateInput.value <= validateInput.max;
     return isValid;
   }
 }

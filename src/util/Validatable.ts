@@ -1,8 +1,8 @@
 //input validation interface - creates the structure of the object that will
 //be passed into the validate function
 
-import { ValidateNumber } from "ValidateNumber";
-import { ValidateString } from "ValidateString";
+import { ValidateNumber } from "./ValidateNumber";
+import { ValidateString } from "./ValidateString";
 
 export module Validatable {
   export interface Validatable {
