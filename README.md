@@ -15,4 +15,4 @@ The final demo video is made available on YouTube for reference: https://youtu.b
 
 ## How to run this project
 
-First, run ```npm install``` to install the dependencies, then run the ```npm start``` command to initialize the server (a new tab will automatically open in your browser). The ```tsc``` command compiles any changes made.
+First, run ```npm install``` to install all dependencies, then run the ```npm start``` command to initialize the server (a new tab will automatically open in your browser). The ```tsc``` command compiles any changes made.
